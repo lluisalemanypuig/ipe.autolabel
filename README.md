@@ -22,7 +22,7 @@ For example:
 
 - ``%% ^L*^L %%`` produces the squares of the natural numbers,
 
-- ``%%^L%%/100`` produces the typical ``x out of 100``,
+- ``%%^L%%/100`` produces the typical "x out of 100": ``x/100``,
 
 - ``This is object number %%^L%%. Its associated variable is $x_{%% ^L %%}$``.
 
