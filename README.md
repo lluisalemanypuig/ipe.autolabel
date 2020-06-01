@@ -24,9 +24,9 @@ For example:
 
 - ``%%^L%%/100`` produces the typical "x out of 100": ``x/100``,
 
-- ``This is object number %%^L%%. Its associated variable is $x_{%% ^L %%}$``.
+- and, similarly, ``This is object number %%^L%%. Its associated variable is $x_{%%^L%%}$`` the ``%%^L%%`` are replaced by the value of the counter.
 
-More generally, any labelling expression can contain several chunks of ``%%``-delimited strings (inbetween arbitrarily long senteces) within which arithmetic expressions making references to ``^L``   are allowed. A labelling expression is legal when it has ``%%``-strings correctly delimited (as a rule of the thumb, it must have an even number of ``%%``), and the contents within ``%%``-strings must comply with LUA's format of arithmetic expressions. This means that besides the usual arithmetic expressions using ``+``,``-``,``*``,``/`` and ``^`` one can also include trigonometric functions (e.g., ``sin``, ``cos``, ...), logarithms (``log``), square root (``sqrt``), and so on.
+More generally, any labelling expression can contain several chunks of ``%%``-delimited strings (inbetween arbitrarily long senteces) within which arithmetic expressions making references to ``^L``   are allowed. A labelling expression is legal when it has ``%%``-strings correctly delimited (as a rule of the thumb, it must have an even number of ``%%``), and the contents within ``%%``-strings comply with LUA's format of arithmetic expressions. This means that besides the usual arithmetic expressions using ``+``,``-``,``*``,``/`` and ``^`` one can also include trigonometric functions (e.g., ``sin``, ``cos``, ...), logarithms (``log``), square root (``sqrt``), and so on.
 
 Users are strongly encouraged to add custom shortcuts to IPE so that this ipelet can be used comfortably. My particular suggestion is
     
