@@ -2,7 +2,7 @@
 
 [IPE](http://ipe.otfried.org/) is an extensible drawing editor software specially targeted at making figures for inclusion into LaTeX documents, as well as multi-page PDF presentations.
 
-This repository contains a small extension of this IPE, a so-called _Ipelet_. The Ipelet in this repository automatizes the repetitive task of manual edition of objects' labels. It offers single, free addition of labels, and also addition of multiple labels attached to several objects.
+This repository contains a small extension of IPE, a so-called _ipelet_. The ipelet in this repository automatizes the repetitive task of manual edition of objects' labels. It offers single, free addition of labels, and also addition of multiple labels attached to several objects.
 
 - Single, free addition of labels: add labels one by one while being able to choose their position in the page freely.
 
