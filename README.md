@@ -14,7 +14,7 @@ This repository contains a small extension of IPE, a so-called _ipelet_. The ipe
 
 ## How to use it
 
-Labels inserted into are formatted using an internal counter which increases one unit for every label inserted. Users of this ipelet can format labels themselves using a string, referred to as "labelling expression", whose syntax is flexible enough to allow arithmetic expressions that contain references to this counter. The counter is referenced using ``^L``.
+Labels inserted into are formatted using an internal counter which increases one step for every label inserted. The exact value of this step is customizable by the user. Moreover, users of this ipelet can format labels themselves using a string, referred to as "labelling expression", whose syntax is flexible enough to allow arithmetic expressions that contain references to this counter. The counter is referenced using ``^L``.
 
 For example:
 
