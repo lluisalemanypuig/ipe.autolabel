@@ -33,12 +33,17 @@ Automatic craetion of labels with customizable text.
 ]]
 
 local label_count = 0					-- value of label
+local step_incr = 1						-- step increment of label
 local offset_x = 5
 local offset_y = 0
 local label_string_format = "%%^L%%"	-- default text for label
 
+function increase_counter()
+	label_count = label_count + step_incr
+end
+
 -- label index function
-function show_label(model)
+function make_label(model)
 	local str = label_string_format
 	local x1, y1 = str:find('%%', nil, true)
 	while x1 ~= nil do
@@ -61,7 +66,6 @@ end
 
 -- make index function
 function set_label(model)
-
 	local d = ipeui.Dialog(model.ui:win(), "Expression")
 	d:add("label", "label", {label="Current: " .. label_string_format}, 1, 1)
 	d:add("expression", "input", {}, 2, 1, 1, 3)
@@ -75,6 +79,24 @@ end
 -- set counter to 0
 function reset_label(model)
 	label_count = 0
+end
+
+-- prompt the user asking for an increment value
+function set_increment(model)
+	local d = ipeui.Dialog(model.ui:win(), "Step increment")
+	d:add("label", "label", {label="Current: " .. step_incr}, 1, 1)
+	d:add("step", "input", {}, 2, 1, 1, 3)
+	d:addButton("ok", "&Ok", "accept")
+	d:addButton("cancel", "&Cancel", "reject")
+	if not d:execute() then return end
+	
+	input = d:get("step")
+	input = tonumber(input)
+	if input == nil then
+		-- not a number
+		model:warning("Input string '" .. input .. "' is not a number.")
+	end
+	step_incr = input
 end
 
 -- prompt the user asking where to put the label next to selected objects
@@ -94,7 +116,7 @@ function geometry_label(model)
 end
 
 -- create the label
-function make_label(model)
+function insert_label(model)
 	local p = model:page()
 	if p:hasSelection() then
 		-- selection detected: put label in every selected object
@@ -108,12 +130,12 @@ function make_label(model)
 		
 		p:deselectAll()
 		
+		-- for every selected object
 		for key,value in ipairs(selection) do
-			-- if object 'obj' is selected then...
-			label_count = label_count + 1
+			increase_counter()
 			
 			-- text to be put in the label
-			local text_str = show_label(model)
+			local text_str = make_label(model)
 			if text_str == false then
 				return
 			end
@@ -129,13 +151,12 @@ function make_label(model)
 			model:creation("create label", text)
 		end
 	else
-		-- 
 		-- no selection detected: put label in mouse
-		--
-		label_count = label_count + 1
+		
+		increase_counter()
 		
 		-- text to be put in the label
-		local text_str = show_label(model)
+		local text_str = make_label(model)
 		if text_str == false then
 			return
 		end
@@ -153,8 +174,9 @@ function make_label(model)
 end
 
 methods = {
-	{ label = "Make label", run = make_label},
+	{ label = "Insert label", run = insert_label},
 	{ label = "Set labelling expression", run = set_label},
+	{ label = "Set step increment", run = set_increment},
 	{ label = "Reset label counter", run = reset_label},
 	{ label = "Set label geometry", run = geometry_label},
 }
