@@ -57,6 +57,10 @@ Click on ``Ipelets`` > ``Automatic labelling`` > ``Set step increment`` in order
 
 In order to set the label counter back to 0, simply click on ``Ipelets`` > ``Automatic labelling`` > ``Reset label counter``.
 
+### Set counter to a custom value
+
+If the user wishes to set the counter's value to some value other than 0, simply click on ``Ipelets`` > ``Automatic labelling`` > ``Set counter value``.
+
 ### Set label geometry
 
 Labels associated to objects are usually placed near the corresponding object, by an offset of ``x=5`` and ``y=0`` by default. This can be changed by clicking on ``Ipelets`` > ``Automatic labelling`` > ``Set label geometry``. 
@@ -66,6 +70,11 @@ Labels associated to objects are usually placed near the corresponding object, b
 Copy the file [automatic_labelling.lua](https://github.com/lluisalemanypuig/autolabipe/blob/master/automatic_labelling.lua) to your ``~/.ipe/ipelets`` or other directory for ipelets.
 
 ## History of changes
+
+### 5th June 2020
+
+- Allow users to set a custom counter value.
+- Fixed bugs. When checking that the input in setting a custom counter step and a custom counter value, the warning message to be displayed tried to concatenate a string with a ``nil`` value.
 
 ### 3rd June 2020
 
