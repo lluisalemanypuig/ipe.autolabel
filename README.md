@@ -28,15 +28,15 @@ For example:
 
 - and, similarly, ``This is object number %%^L%%. Its associated variable is $x_{%%^L%%}$`` the ``%%^L%%`` are replaced by the value of the counter.
 
-More generally, any labelling expression can contain several chunks of ``%%``-delimited strings (inbetween arbitrarily long senteces) within which arithmetic expressions making references to ``^L`` are allowed. A labelling expression is legal when it has ``%%``-strings correctly delimited (as a rule of the thumb, it must have an even number of ``%%``), and the contents within ``%%``-strings comply with LUA's format of arithmetic expressions -- accounting for the ``^L``, that is. This means that besides the usual arithmetic expressions using ``+``,``-``,``*``,``/`` and ``^`` one can also include trigonometric functions (e.g., ``sin``, ``cos``, ...), logarithms (``log``), square root (``sqrt``), and so on, all using the reference to the counter ^L.
+More generally, any labelling expression can contain several chunks of ``%%``-delimited strings (inbetween arbitrarily long senteces) within which arithmetic expressions making references to ``^L`` are allowed. A labelling expression is legal when it has ``%%``-strings correctly delimited (as a rule of the thumb, it must have an even number of ``%%``), and the contents within ``%%``-strings comply with LUA's format of arithmetic expressions -- accounting for the ``^L``, that is. This means that besides the usual arithmetic expressions using ``+``,``-``,``*``,``/`` and ``^`` one can also include trigonometric functions (e.g., ``sin``, ``cos``, ...), logarithms (``log``), square root (``sqrt``), and so on, all using the reference to the counter ``^L``.
 
 Users are strongly encouraged to add custom shortcuts to IPE so that this ipelet can be used comfortably. My particular suggestion is
     
-    -- assign a shortcut to modifying the labelling expression
-    ipelet_1_automatic_labelling = "Ctrl+D",
-    
-    -- assign a shortcut to the action of labelling objects
-    ipelet_2_automatic_labelling = "Ctrl+Alt+D",
+	-- assign a shortcut to inserting labels
+	ipelet_1_automatic_labelling = "Ctrl+D",
+
+	-- assign a shortcut to modifying the labelling expression
+	ipelet_2_automatic_labelling = "Ctrl+Alt+D",
 
 ### Insert a label
 
