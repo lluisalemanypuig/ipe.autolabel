@@ -64,58 +64,7 @@ function make_label(model)
 	return str
 end
 
--- make index function
-function set_label(model)
-	local d = ipeui.Dialog(model.ui:win(), "Expression")
-	d:add("label", "label", {label="Current: " .. label_string_format}, 1, 1)
-	d:add("expression", "input", {}, 2, 1, 1, 3)
-	d:addButton("ok", "&Ok", "accept")
-	d:addButton("cancel", "&Cancel", "reject")
-	if not d:execute() then return end
-	
-	label_string_format = d:get("expression")
-end
-
--- set counter to 0
-function reset_label(model)
-	label_count = 0
-end
-
--- prompt the user asking for an increment value
-function set_increment(model)
-	local d = ipeui.Dialog(model.ui:win(), "Step increment")
-	d:add("label", "label", {label="Current: " .. step_incr}, 1, 1)
-	d:add("step", "input", {}, 2, 1, 1, 3)
-	d:addButton("ok", "&Ok", "accept")
-	d:addButton("cancel", "&Cancel", "reject")
-	if not d:execute() then return end
-	
-	input = d:get("step")
-	input = tonumber(input)
-	if input == nil then
-		-- not a number
-		model:warning("Input string '" .. input .. "' is not a number.")
-	end
-	step_incr = input
-end
-
--- prompt the user asking where to put the label next to selected objects
-function geometry_label(model)
-	local d = ipeui.Dialog(model.ui:win(), "Specify label offset")
-	
-	d:add("label1", "label", {label="x offset"}, 1, 1)
-	d:add("offset_x", "input", {}, 1, 2, 1, 3)
-	d:add("label2", "label", {label="y offset"}, 2, 1)
-	d:add("offset_y", "input", {}, 2, 2, 1, 3)
-	d:addButton("ok", "&Ok", "accept")
-	d:addButton("cancel", "&Cancel", "reject")
-	if not d:execute() then return end
-	
-	offset_x = d:get("offset_x")
-	offset_y = d:get("offset_y")
-end
-
--- create the label
+-- insert a label into IPE
 function insert_label(model)
 	local p = model:page()
 	if p:hasSelection() then
@@ -173,10 +122,82 @@ function insert_label(model)
 	end
 end
 
+-- set labelling expression
+function set_label_expression(model)
+	local d = ipeui.Dialog(model.ui:win(), "Expression")
+	d:add("label", "label", {label="Current: " .. label_string_format}, 1, 1)
+	d:add("expression", "input", {}, 2, 1, 1, 3)
+	d:addButton("ok", "&Ok", "accept")
+	d:addButton("cancel", "&Cancel", "reject")
+	if not d:execute() then return end
+	
+	label_string_format = d:get("expression")
+end
+
+-- prompt the user asking for an increment value
+function set_counter_increment(model)
+	local d = ipeui.Dialog(model.ui:win(), "Step increment")
+	d:add("label", "label", {label="Current: " .. step_incr}, 1, 1)
+	d:add("step", "input", {}, 2, 1, 1, 3)
+	d:addButton("ok", "&Ok", "accept")
+	d:addButton("cancel", "&Cancel", "reject")
+	if not d:execute() then return end
+	
+	input = d:get("step")
+	num_input = tonumber(input)
+	if num_input == nil then
+		-- not a number
+		model:warning("Input string '" .. input .. "' is not a number.")
+		return
+	end
+	step_incr = num_input
+end
+
+-- set counter to 0
+function reset_label_counter(model)
+	label_count = 0
+end
+
+-- set label counter to a custom value
+function set_counter_value(model)
+	local d = ipeui.Dialog(model.ui:win(), "Step counter value")
+	d:add("label", "label", {label="Current: " .. label_count}, 1, 1)
+	d:add("counter_value", "input", {}, 2, 1, 1, 3)
+	d:addButton("ok", "&Ok", "accept")
+	d:addButton("cancel", "&Cancel", "reject")
+	if not d:execute() then return end
+	
+	input = d:get("counter_value")
+	num_input = tonumber(input)
+	if num_input == nil then
+		-- not a number
+		model:warning("Input string '" .. input .. "' is not a number.")
+		return
+	end
+	label_count = num_input
+end
+
+-- prompt the user asking where to put the label next to selected objects
+function set_label_geometry(model)
+	local d = ipeui.Dialog(model.ui:win(), "Specify label offset")
+	
+	d:add("label1", "label", {label="x offset"}, 1, 1)
+	d:add("offset_x", "input", {}, 1, 2, 1, 3)
+	d:add("label2", "label", {label="y offset"}, 2, 1)
+	d:add("offset_y", "input", {}, 2, 2, 1, 3)
+	d:addButton("ok", "&Ok", "accept")
+	d:addButton("cancel", "&Cancel", "reject")
+	if not d:execute() then return end
+	
+	offset_x = d:get("offset_x")
+	offset_y = d:get("offset_y")
+end
+
 methods = {
 	{ label = "Insert label", run = insert_label},
-	{ label = "Set labelling expression", run = set_label},
-	{ label = "Set step increment", run = set_increment},
-	{ label = "Reset label counter", run = reset_label},
-	{ label = "Set label geometry", run = geometry_label},
+	{ label = "Set labelling expression", run = set_label_expression},
+	{ label = "Set step increment", run = set_counter_increment},
+	{ label = "Reset label counter", run = reset_label_counter},
+	{ label = "Set counter value", run = set_counter_value},
+	{ label = "Set label geometry", run = set_label_geometry},
 }
