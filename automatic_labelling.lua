@@ -23,7 +23,7 @@ Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 --[[
 You'll find the instruction manual at:
 
-https://github.com/lluisalemanypuig/autolabipe.git
+https://github.com/lluisalemanypuig/ipe.autolabel
 --]]
 
 label = "Automatic labelling"
