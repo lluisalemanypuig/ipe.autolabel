@@ -29,7 +29,7 @@ https://github.com/lluisalemanypuig/ipe.autolabel
 label = "Automatic labelling"
 
 about = [[
-Automatic craetion of labels with customizable text.
+Automatic creation of labels with customizable text.
 ]]
 
 local label_count = 0					-- value of label
