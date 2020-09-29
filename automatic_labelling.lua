@@ -32,11 +32,11 @@ about = [[
 Automatic creation of labels with customizable text.
 ]]
 
-local label_count = 0					-- value of label
-local step_incr = 1						-- step increment of label
-local offset_x = 5
-local offset_y = 0
-local label_string_format = "%%^L%%"	-- default text for label
+label_count = 0					-- value of label
+step_incr = 1					-- step increment of label
+offset_x = 5
+offset_y = 0
+label_string_format = "%%^L%%"	-- default text for label
 
 function increase_counter()
 	label_count = label_count + step_incr
@@ -91,7 +91,6 @@ function insert_label(model)
 			
 			-- position of the object
 			local pos = p:bbox(value):topRight()
-			--    translate a bit the label
 			pos = pos + ipe.Vector(offset_x, offset_y)
 			-- create the text label
 			local text = ipe.Text(model.attributes, text_str, pos)
@@ -143,8 +142,8 @@ function set_counter_increment(model)
 	d:addButton("cancel", "&Cancel", "reject")
 	if not d:execute() then return end
 	
-	input = d:get("step")
-	num_input = tonumber(input)
+	local input = d:get("step")
+	local num_input = tonumber(input)
 	if num_input == nil then
 		-- not a number
 		model:warning("Input string '" .. input .. "' is not a number.")
@@ -167,8 +166,8 @@ function set_counter_value(model)
 	d:addButton("cancel", "&Cancel", "reject")
 	if not d:execute() then return end
 	
-	input = d:get("counter_value")
-	num_input = tonumber(input)
+	local input = d:get("counter_value")
+	local num_input = tonumber(input)
 	if num_input == nil then
 		-- not a number
 		model:warning("Input string '" .. input .. "' is not a number.")
