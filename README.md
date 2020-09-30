@@ -6,11 +6,11 @@ This repository contains a small extension of IPE, a so-called _ipelet_. The ipe
 
 - Single, free insertion of labels: add labels one by one while being able to choose their position in the page freely.
 
-![Inserting labels one by one.](images/progress_single.gif)
+![Inserting labels one by one.](figures/progress_single.gif)
 
 - Multiple, constrained insertion: select several objects in your document and add the labels next to them in an orderly fashion.
 
-![Inserting multiples labels at one. The dots are selected prior to label insertion.](images/progress_multiple.gif)
+![Inserting multiples labels at one. The dots are selected prior to label insertion.](figures/progress_multiple.gif)
 
 ## How to use it
 
@@ -18,11 +18,11 @@ Adding labels is fairly simple. First, one has to set the string with which the 
 
 First, access the appropriate menu to set the labelling expression:
 
-![Selecting the appropriate menu: `Ipelets` > `Automatic labelling` > `Set labelling expression`.](images/select_menu.png)
+![Selecting the appropriate menu: `Ipelets` > `Automatic labelling` > `Set labelling expression`.](figures/select_menu.png)
 
 Then, in the menu, write the desired labelling expression:
 
-![Setting the labelling expression.](images/enter_labelling_expression.png)
+![Setting the labelling expression.](figures/enter_labelling_expression.png)
 
 Now, let me give you a few examples of what a labelling expression can be:
 
@@ -58,8 +58,8 @@ Users are strongly encouraged to add custom shortcuts to IPE so that this ipelet
 
 Click on `Ipelets` > `Automatic labelling` > `Insert label` (or use the shortcut) in order to generate a new label. Users willing to label several objects in one click must be aware that objects are labelled in the same order they were introduced into IPE. Objects must be selected prior to making the labels.
 
-![Labelling dots that were inserted into IPE in zig-zag.](images/order_1.gif)
-![Labelling dots that were inserted into IPE in counter-clockwise order.](images/order_2.gif)
+![Labelling dots that were inserted into IPE in zig-zag.](figures/order_1.gif)
+![Labelling dots that were inserted into IPE in counter-clockwise order.](figures/order_2.gif)
 
 ### Set a custom labelling expression
 
