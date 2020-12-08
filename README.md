@@ -14,7 +14,7 @@ This repository contains a small extension of IPE, a so-called _ipelet_. The ipe
 
 ## How to use it
 
-Adding labels is fairly simple. First, one has to set the string with which the label is going to be generated. From now on, I will refer to this string as the _labelling expression_. This string has a syntax flexible enough to allow arithmetic expressions of many kinds, and at its core we find a counter. This counter increases one step for every label inserted (the exact value of this step is customizable by the user!) and is used to generate the labels in a very predictable way.
+Adding labels is fairly simple. First, one has to set the string with which the label is going to be generated. From now on, this string will be referred to as the _labelling expression_. This string has a syntax flexible enough to allow arithmetic expressions of many kinds, and at its core we find a counter. This counter increases one step for every label inserted (the exact value of this step is customizable by the user!) and is used to generate the labels in a very predictable way.
 
 First, access the appropriate menu to set the labelling expression:
 
@@ -24,7 +24,7 @@ Then, in the menu, write the desired labelling expression:
 
 ![Setting the labelling expression.](figures/enter_labelling_expression.png)
 
-Now, let me give you a few examples of what a labelling expression can be:
+Now follow a few examples of what a labelling expression can be:
 
 - The labelling expression `$x_{%% ^L %%}$` produces an `x` with a subscript that contains the value of the counter, all surrounded by `$`. Since (by default) the counter starts at 1, the subscripts generated are the natural numbers: $x_1$, $x_2$, $x_3$, ...,
 
@@ -44,7 +44,7 @@ More generally, any labelling expression can contain several chunks of `%%`-deli
 
 ### Using the ipelet in a comfortable way
 
-Users are strongly encouraged to add custom shortcuts to IPE so that this ipelet can be used comfortably. My particular suggestion is
+Users are strongly encouraged to add custom shortcuts to IPE so that this ipelet can be used comfortably. One of the possibilities is
     
 	-- assign a shortcut to inserting labels
 	ipelet_1_automatic_labelling = "Ctrl+D",
